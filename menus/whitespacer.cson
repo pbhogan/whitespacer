@@ -1,0 +1,14 @@
+"menu": [
+	{
+		"label": "Packages"
+		"submenu": [
+			"label": "Whitespace"
+			"submenu": [
+				{ "label": "Remove Trailing Whitespace", "command": "whitespacer:remove-trailing-whitespace" }
+				{ "label": "Convert Tabs To Spaces", "command": "whitespacer:convert-tabs-to-spaces" }
+				{ "label": "Convert Spaces To Tabs", "command": "whitespacer:convert-spaces-to-tabs" }
+				{ "label": "Convert Two Spaces To Tabs", "command": "whitespacer:convert-two-spaces-to-tabs" }
+			]
+		]
+	}
+]
