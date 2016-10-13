@@ -1,6 +1,6 @@
 {
   "name": "whitespacer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./lib/main",
   "description": "Strips trailing whitespace, adds a trailing newlines when an editor is saved and does tab to spaces conversions.",
   "repository": "https://github.com/pbhogan/whitespacer",
@@ -48,4 +48,3 @@
     "coffeelint": "^1.9.7"
   }
 }
-
