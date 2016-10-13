@@ -87,13 +87,21 @@ class Whitespacer
 		buffer = editor.getBuffer()
 		lastRow = buffer.getLastRow()
 
-		while lastRow and buffer.lineForRow(lastRow) is ""
-			buffer.deleteRow lastRow
-			lastRow -= 1
+		# Find last row with content.
+		row = lastRow
+		while row and buffer.lineForRow(row) is ""
+			row -= 1
 
-		selectedBufferRanges = editor.getSelectedBufferRanges()
-		buffer.append Array(count + 1).join("\n")
-		editor.setSelectedBufferRanges selectedBufferRanges
+		# Where end needs to be after spaces.
+		end = row + count
+
+		# Remove empty lines or add them as required.
+		if end < lastRow
+			buffer.deleteRow(lastRow--) while end < lastRow
+		else
+			selectedBufferRanges = editor.getSelectedBufferRanges()
+			buffer.append Array(end + 1 - lastRow).join("\n")
+			editor.setSelectedBufferRanges selectedBufferRanges
 
 
 	convertTabsToSpaces: (editor) ->
@@ -117,7 +125,6 @@ class Whitespacer
 
 
 	convertTwoSpacesToTabs: (editor) ->
-		# console.log "running convertTwoSpacesToTabs"
 		buffer = editor.getBuffer()
 		buffer.transact ->
 			buffer.scan /^(  )+/g, ({lineText, match, replace}) ->
