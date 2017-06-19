@@ -126,10 +126,12 @@ class Whitespacer
 
 	convertTwoSpacesToTabs: (editor) ->
 		buffer = editor.getBuffer()
+
 		buffer.transact ->
 			buffer.scan /^(  )+/g, ({lineText, match, replace}) ->
 				[whitespace] = match
 				tabCount = whitespace.length / 2
 				replace Array(tabCount + 1).join("\t")
+
 		editor.setSoftTabs(false)
 
