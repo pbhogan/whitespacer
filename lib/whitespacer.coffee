@@ -35,8 +35,8 @@ class Whitespacer
 					@removeTrailingWhitespace(editor, editor.getGrammar().scopeName)
 
 				count = atom.config.get("whitespacer.ensureTrailingNewlines", scope: scopeDescriptor)
-				if count > 0
-					@ensureTrailingNewlines editor, count
+				count = Math.max(count, 0)
+				@ensureTrailingNewlines editor, count
 
 		editorTextInsertedSubscription = editor.onDidInsertText (event) ->
 			return unless event.text is "\n"
